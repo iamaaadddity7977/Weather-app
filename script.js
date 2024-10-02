@@ -58,11 +58,17 @@ searchBtn.addEventListener('click', () => {
 
 
 
-// document.getElementById("inputBox").addEventListener("keyup", function(event) {
-//     if (event.key === "Enter") {
-//         searchBtn(); // Call your weather function
-//     }
-// });
+inputBox.addEventListener("keyup", function(event) {
+    // console.log(event);
+    if (event.key === "Enter") {
+        checkWeather(inputBox.value);
+        // console.log(event);
+        
+    }
+});
+
+
+
 
 
 
