@@ -8,6 +8,7 @@ const temperature = document.querySelector('.temperature');
 const description = document.querySelector('.description');
 const location_not_found = document.querySelector('.location-not-found');
 const weather_body = document.querySelector('.weather-body');
+const location_input = document.querySelector('#locations-input');
 
 
 async function checkWeather(city) {
@@ -20,7 +21,7 @@ async function checkWeather(city) {
     if (weather_data.cod === `404`) {
         location_not_found.style.display = "flex";
         weather_body.style.display = "none";
-        console.log("erro");
+      //  console.log("erro");
         return;
     }
     // location_not_found.style.display = "none";
@@ -30,6 +31,8 @@ async function checkWeather(city) {
     description.innerHTML = `${weather_data.weather[0].description}`;
     humidity.innerHTML = `${weather_data.main.humidity}%`;
     wind_speed.innerHTML = `${weather_data.wind.speed}Km/H`;
+   location_input.innerHTML = `${weather_data.name ?? '-'}`;
+  
 
     switch (weather_data.weather[0].main) {
         case 'Clouds':
@@ -47,15 +50,13 @@ async function checkWeather(city) {
         case 'Mist':
             weather_img.src = "./images/mist.png";
     }
-   // console.log(weather_data);
+    
+ //   console.log(weather_data);
 }
 
 searchBtn.addEventListener('click', () => {
-
     checkWeather(inputBox.value)
-
 });
-
 
 
 inputBox.addEventListener("keyup", function(event) {
@@ -66,9 +67,6 @@ inputBox.addEventListener("keyup", function(event) {
         
     }
 });
-
-
-
 
 
 
